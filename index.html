@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BenchDeck</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <label class="bg-btn" title="Change background" aria-label="Change background image">
+    Wallpaper
+    <input type="file" accept="image/*" onchange="loadBg(this)">
+  </label>
+
+  <div class="deck">
+
+    <header>
+      <h1 contenteditable spellcheck="false" data-key="title">BenchDeck</h1>
+      <p contenteditable spellcheck="false" data-key="subtitle">Developer &amp; Electronics Workbench</p>
+    </header>
+
+    <form class="search" action="https://www.google.com/search" method="get">
+      <label for="q" class="sr-only">Search Google</label>
+      <input id="q" type="search" name="q" placeholder="Search Google..." autocomplete="off" required>
+      <button type="submit">Search</button>
+    </form>
+
+    <section class="glass">
+      <div class="head">
+        <h2>Quick Links</h2>
+        <button onclick="addLink()">+ Add</button>
+      </div>
+      <nav id="links"></nav>
+    </section>
+
+    <section class="glass">
+      <div class="head">
+        <h2>Daily Checklist</h2>
+        <button onclick="addTask()">+ Add</button>
+      </div>
+      <div id="tasks"></div>
+    </section>
+
+    <footer>
+      <p contenteditable spellcheck="false" data-key="footer">BenchDeck · Pure HTML, CSS &amp; JS</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
