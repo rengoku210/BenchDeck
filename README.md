@@ -73,6 +73,4 @@ Created by: Rengoku (@rengoku210) for Hack Club Stardance.
 
 Website icons: Google Favicon service, used to display website icons for quick links.
 
-AI assistance: I used AI to help fix some UI bugs and adjust the glassmorphism styling because I couldn't get it to the sweet spot.
-
 Background wallpaper:“Purple abstract Layers Wallpaper” from 4KWallpapers. The original creator is not identified on the source page. The wallpaper was not created by me.
