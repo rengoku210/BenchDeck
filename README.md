@@ -44,7 +44,8 @@ BenchDeck is built with HTML, CSS, and JavaScript, so there is no package instal
 Make BenchDeck Your New Tab Page
 Some browsers don't let you set a custom New Tab page directly in their built-in settings. You can use a browser extension for this.
 
-1. Install New Tab Redirect extension.
+1. Install New Tab Redirect extension. 
+https://chromewebstore.google.com/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna
 
 2. Open the extension's settings or Options page.
 
