@@ -1,4 +1,4 @@
-BenchDeck
+#BenchDeck
 
 A neat and customizable homepage to store all your favorite links and quick-access options in one place.
 [Live Website](https://benchdeck.vercel.app/) · [GitHub Repository](https://github.com/rengoku210/BenchDeck)
@@ -9,14 +9,14 @@ Preview
 
 BenchDeck is a personal dashboard initiative aimed at creating an organized and navigable tab without any unwanted clutter.
 
-Goals
+#Goals
 1. Keep frequently used links close at hand.
 
 2. Make the layout simple and easy to use.
 
 3. Leave room for personal styling and customization.
 
-Features
+#Features
 1. Google Search Search directly from the dashboard.
 
 2. Quick Links: Add and remove your favorite websites.
@@ -25,14 +25,14 @@ Features
 
 4. Customization: Edit the dashboard text and choose a custom wallpaper.
 
-How to Use
+#How to Use
 Use It Online
 
 No account or installation is required to try the deployed version.
 
 Website: https://benchdeck.vercel.app/
 
-Run It Locally
+#Run It Locally
 1. Clone the BenchDeck repository.
 
 2. Open the project folder.
@@ -41,7 +41,7 @@ Run It Locally
 
 BenchDeck is built with HTML, CSS, and JavaScript, so there is no package installation or build command required for this version.
 
-Make BenchDeck Your New Tab Page
+#Make BenchDeck Your New Tab Page
 
 
 
@@ -62,10 +62,10 @@ https://chromewebstore.google.com/detail/new-tab-redirect/icpgjfneehieebagbmdbhn
 
 If it doesn't work in Brave, make sure the extension is enabled at brave://extensions.
 
-How It Works
+#How It Works
 BenchDeck uses HTML for its structure, CSS for styling, and JavaScript for interactive features. It uses browser local storage to save supported customizations.
 
-AI Assistance
+#AI Assistance
 I used AI to help fix some UI bugs and adjust the glassmorphism settings because I couldn't get the styling to the sweet spot.
 
 Credits and Acknowledgements
