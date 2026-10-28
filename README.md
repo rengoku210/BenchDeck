@@ -42,6 +42,13 @@ Run It Locally
 BenchDeck is built with HTML, CSS, and JavaScript, so there is no package installation or build command required for this version.
 
 Make BenchDeck Your New Tab Page
+
+
+
+https://github.com/user-attachments/assets/51ff4320-6c34-4841-97a7-89856281a17d
+
+
+
 Some browsers don't let you set a custom New Tab page directly in their built-in settings. You can use a browser extension for this.
 
 1. Install New Tab Redirect extension. 
