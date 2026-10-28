@@ -1,7 +1,7 @@
 BenchDeck
 
 A neat and customizable homepage to store all your favorite links and quick-access options in one place.
-Live Website · GitHub Repository
+[Live Website](https://benchdeck.vercel.app/) · [GitHub Repository](https://github.com/rengoku210/BenchDeck)
 Preview
 
 <img width="1600" height="770" alt="{3B386D68-AD6D-4420-8712-0725E37470DC}" src="https://github.com/user-attachments/assets/11c65e98-9cd7-40ca-97db-7bed7782292e" />
