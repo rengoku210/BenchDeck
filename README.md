@@ -25,6 +25,8 @@ BenchDeck is a personal dashboard initiative aimed at creating an organized and 
 
 4. Customization: Edit the dashboard text and choose a custom wallpaper.
 
+5. Scratchpad: Write quick notes, electronics pinouts, and commands. Notes are saved in your 
+
 # How to Use
 Use It Online
 
