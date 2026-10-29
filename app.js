@@ -1,11 +1,9 @@
-// Read saved data safely so malformed or outdated localStorage values do not
-// prevent the page from loading.
-function load(key, defaultValue) {
+function load(key, fallback) {
   try {
-    const saved = localStorage.getItem(key);
-    return saved === null ? defaultValue : JSON.parse(saved);
+    const v = localStorage.getItem(key);
+    return v === null ? fallback : JSON.parse(v);
   } catch {
-    return defaultValue;
+    return fallback;
   }
 }
 
@@ -30,41 +28,39 @@ let tasks = load('tasks', [
 
 function getFavicon(url) {
   try {
-    const domain = new URL(url).hostname;
-    return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
-  } catch {
-    return '';
-  }
+    return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(new URL(url).hostname)}&sz=64`;
+  } catch { return ''; }
 }
 
 function renderLinks() {
   document.getElementById('links').innerHTML = links.map((link, i) => `
     <a class="tile" href="${link.url}" target="_blank" rel="noopener noreferrer">
       <img src="${getFavicon(link.url)}" alt="">
-      <button class="del-link" onclick="removeLink(event, ${i})" aria-label="Remove ${link.label}">×</button>
+      <button class="del-link" onclick="removeLink(event, ${i})" aria-label="Remove ${link.label}">&times;</button>
       <span>${link.label}</span>
     </a>
   `).join('');
 }
 
 function renderTasks() {
-  document.getElementById('tasks').innerHTML = tasks.map((task, i) => `
-    <label class="task">
+  const el = document.getElementById('tasks');
+  el.innerHTML = tasks.map((t, i) =>
+    `<label class="task">
       <input type="checkbox">
       <span class="box" aria-hidden="true"></span>
-      <span>${task}</span>
-      <button class="del-task" onclick="removeTask(event, ${i})" aria-label="Remove task">×</button>
-    </label>
-  `).join('');
+      <span>${t}</span>
+      <button class="del-task" onclick="removeTask(event, ${i})" aria-label="Remove task">&times;</button>
+    </label>`
+  ).join('');
 }
 
 function addLink() {
-  const enteredUrl = prompt('Website URL (e.g. https://example.com)');
-  if (!enteredUrl) return;
+  const raw = prompt('Website URL (e.g. https://example.com)');
+  if (!raw) return;
 
   let url;
   try {
-    url = new URL(/^https?:\/\//i.test(enteredUrl) ? enteredUrl : `https://${enteredUrl}`);
+    url = new URL(/^https?:\/\//i.test(raw) ? raw : `https://${raw}`);
     if (!['http:', 'https:'].includes(url.protocol)) return;
   } catch {
     alert('Please enter a valid website URL.');
@@ -77,10 +73,10 @@ function addLink() {
   renderLinks();
 }
 
-function removeLink(event, index) {
-  event.preventDefault();
-  event.stopPropagation();
-  links.splice(index, 1);
+function removeLink(e, idx) {
+  e.preventDefault();
+  e.stopPropagation();
+  links.splice(idx, 1);
   save('links', links);
   renderLinks();
 }
@@ -104,21 +100,28 @@ function removeTask(event, index) {
 function loadBg(input) {
   const file = input.files && input.files[0];
   if (!file) return;
-  const imageUrl = URL.createObjectURL(file);
-  document.body.style.backgroundImage = `url("${imageUrl}")`;
+  const src = URL.createObjectURL(file);
+  document.body.style.backgroundImage = `url("${src}")`;
   document.body.style.backgroundSize = 'cover';
   document.body.style.backgroundPosition = 'center';
 }
 
-document.querySelectorAll('[contenteditable][data-key]').forEach((element) => {
-  const key = `text-${element.dataset.key}`;
+// persist editable fields across reloads
+document.querySelectorAll('[contenteditable][data-key]').forEach((el) => {
+  const key = `text-${el.dataset.key}`;
   const saved = localStorage.getItem(key);
-  if (saved !== null) element.textContent = saved;
-
-  element.addEventListener('blur', () => {
-    localStorage.setItem(key, element.textContent);
-  });
+  if (saved !== null) el.textContent = saved;
+  el.addEventListener('blur', () => localStorage.setItem(key, el.textContent));
 });
+
+const noteBox = document.getElementById('notes');
+noteBox.value = load('notes', '');
+noteBox.addEventListener('input', () => save('notes', noteBox.value));
+
+function clearNotes() {
+  noteBox.value = '';
+  save('notes', '');
+}
 
 renderLinks();
 renderTasks();
